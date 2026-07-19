@@ -1,8 +1,32 @@
 import SwiftUI
+import SwiftData
 
 @main
 struct FinFlowApp: App {
-    @StateObject private var container = AppContainer.live()
+    private let modelContainer: ModelContainer
+    @StateObject private var container: AppContainer
+
+    @MainActor
+    init() {
+        do {
+            let modelContainer = try ModelContainer(
+                for: AccountRecord.self,
+                CategoryRecord.self,
+                TransactionRecord.self
+            )
+            let repository = SwiftDataFinanceRepository(modelContext: modelContainer.mainContext)
+            try repository.seedIfNeeded()
+            self.modelContainer = modelContainer
+            _container = StateObject(
+                wrappedValue: AppContainer(
+                    financeRepository: repository,
+                    preferences: UserDefaultsPreferences()
+                )
+            )
+        } catch {
+            fatalError("Unable to initialize FinFlow storage: \(error)")
+        }
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -10,5 +34,6 @@ struct FinFlowApp: App {
                 .environmentObject(container)
                 .tint(FFColor.accent)
         }
+        .modelContainer(modelContainer)
     }
 }

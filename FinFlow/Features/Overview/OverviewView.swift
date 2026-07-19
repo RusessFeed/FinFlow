@@ -3,26 +3,36 @@ import SwiftUI
 struct OverviewView: View {
     @EnvironmentObject private var container: AppContainer
 
-    private var accounts: [Account] {
-        container.accountRepository.fetchAccounts()
+    private var income: Money {
+        let amount = container.transactions
+            .filter { $0.kind == .income }
+            .reduce(Decimal.zero) { $0 + $1.amount.amount }
+        return Money(amount)
+    }
+
+    private var spending: Money {
+        let amount = container.transactions
+            .filter { $0.kind == .expense }
+            .reduce(Decimal.zero) { $0 + $1.amount.amount }
+        return Money(amount)
     }
 
     var body: some View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: FFLayout.medium) {
-                    BalanceCard(balance: accounts.totalBalance())
+                    BalanceCard(balance: container.accounts.totalBalance())
 
                     HStack(spacing: FFLayout.medium) {
-                        MetricCard(title: "Income", value: "$5,840", color: FFColor.positive)
-                        MetricCard(title: "Spent", value: "$2,190", color: FFColor.negative)
+                        MetricCard(title: "Income", value: income.formatted(), color: FFColor.positive)
+                        MetricCard(title: "Spent", value: spending.formatted(), color: FFColor.negative)
                     }
 
                     FFCard {
                         VStack(alignment: .leading, spacing: FFLayout.medium) {
                             Text("Your accounts")
                                 .font(.headline)
-                            ForEach(accounts) { account in
+                            ForEach(container.accounts) { account in
                                 AccountRow(account: account)
                             }
                         }
