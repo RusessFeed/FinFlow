@@ -2,7 +2,7 @@
 
 FinFlow is a portfolio-grade personal finance app built as a production-minded iOS project.
 
-## Current milestone — Accounts and transactions
+## Current milestone — Financial dashboard and analytics
 
 - SwiftUI application shell and tab navigation
 - Dependency injection through `AppContainer`
@@ -14,12 +14,16 @@ FinFlow is a portfolio-grade personal finance app built as a production-minded i
 - Income and expense forms with validation and categories
 - Transaction deletion with automatic balance rollback
 - Live dashboard totals driven by persisted data
+- Seven-day spending chart powered by Swift Charts
+- Monthly income, spending, and cash-flow calculations
+- Category breakdown with accessible visualizations
+- Editable monthly budgets with progress and warning states
 - Unit tests for CRUD operations, balance calculations, and app state
 
 ## Roadmap
 
-Future milestones will add SwiftData persistence, transaction management, analytics, receipt scanning, exchange rates, insights, security, widgets, and CI.
+Future milestones will add receipt scanning, exchange rates, smart insights, security, widgets, accessibility polish, and CI.
 
 ## Stack
 
-Swift, SwiftUI, MVVM, protocol-oriented dependency injection, XCTest · iOS 17+
+Swift, SwiftUI, SwiftData, Swift Charts, MVVM, protocol-oriented dependency injection, XCTest · iOS 17+

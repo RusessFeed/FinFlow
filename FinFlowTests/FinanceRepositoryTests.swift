@@ -11,7 +11,8 @@ final class FinanceRepositoryTests: XCTestCase {
         let schema = Schema([
             AccountRecord.self,
             CategoryRecord.self,
-            TransactionRecord.self
+            TransactionRecord.self,
+            BudgetRecord.self
         ])
         let configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: true)
         modelContainer = try ModelContainer(for: schema, configurations: [configuration])
@@ -97,5 +98,22 @@ final class FinanceRepositoryTests: XCTestCase {
                 )
             )
         )
+    }
+
+    func testUpsertingBudgetReplacesCategoryLimit() throws {
+        let category = SpendingCategory(name: "Food", iconName: "fork.knife", tintHex: "#E17055")
+        modelContainer.mainContext.insert(CategoryRecord(category: category))
+        try modelContainer.mainContext.save()
+
+        try repository.upsertBudget(
+            BudgetDraft(categoryID: category.id, monthlyLimit: Money(500))
+        )
+        try repository.upsertBudget(
+            BudgetDraft(categoryID: category.id, monthlyLimit: Money(650))
+        )
+
+        let budgets = try repository.fetchBudgets()
+        XCTAssertEqual(budgets.count, 1)
+        XCTAssertEqual(budgets.first?.monthlyLimit, Money(650))
     }
 }

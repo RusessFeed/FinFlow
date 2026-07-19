@@ -58,6 +58,7 @@ private final class StubFinanceRepository: FinanceRepository {
     func fetchAccounts() throws -> [Account] { accounts }
     func fetchCategories() throws -> [SpendingCategory] { [] }
     func fetchTransactions() throws -> [FinancialTransaction] { transactions }
+    func fetchBudgets() throws -> [Budget] { [] }
 
     func createAccount(_ draft: AccountDraft) throws {
         accounts.append(
@@ -88,4 +89,6 @@ private final class StubFinanceRepository: FinanceRepository {
     func deleteTransaction(id: UUID) throws {
         transactions.removeAll { $0.id == id }
     }
+
+    func upsertBudget(_ draft: BudgetDraft) throws {}
 }

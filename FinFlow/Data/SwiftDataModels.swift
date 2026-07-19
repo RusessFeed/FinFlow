@@ -91,3 +91,26 @@ final class TransactionRecord {
         )
     }
 }
+
+@Model
+final class BudgetRecord {
+    @Attribute(.unique) var id: UUID
+    var categoryID: UUID
+    var limitAmount: Decimal
+    var currencyCode: String
+
+    init(budget: Budget) {
+        id = budget.id
+        categoryID = budget.categoryID
+        limitAmount = budget.monthlyLimit.amount
+        currencyCode = budget.monthlyLimit.currencyCode
+    }
+
+    var domainModel: Budget {
+        Budget(
+            id: id,
+            categoryID: categoryID,
+            monthlyLimit: Money(limitAmount, currencyCode: currencyCode)
+        )
+    }
+}

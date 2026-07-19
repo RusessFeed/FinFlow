@@ -12,7 +12,8 @@ struct FinFlowApp: App {
             let modelContainer = try ModelContainer(
                 for: AccountRecord.self,
                 CategoryRecord.self,
-                TransactionRecord.self
+                TransactionRecord.self,
+                BudgetRecord.self
             )
             let repository = SwiftDataFinanceRepository(modelContext: modelContainer.mainContext)
             try repository.seedIfNeeded()

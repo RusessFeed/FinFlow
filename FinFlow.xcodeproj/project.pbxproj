@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		18F2CE998E08780679EC6629 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F90FC09D9349900E11FC52E /* AppContainer.swift */; };
+		3500B028F05FF26C42A4FCCC /* FinancialAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6557E7402F6A866D8BCD93 /* FinancialAnalytics.swift */; };
 		35FB886135245986BA39742C /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ACD5246FBEDE5A95F8E034 /* MoneyTests.swift */; };
 		3ABD1D3407F74D84C8B113CF /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D2714D2E16D5F438EE66C0 /* ProfileView.swift */; };
 		3B80EE48A3B9E61DADF5C9FF /* FFLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A0E9029ECD9376408A4B33 /* FFLayout.swift */; };
+		46F429D066874231B28B5635 /* FinancialAnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BF312699F519E14F45E23C /* FinancialAnalyticsTests.swift */; };
 		5B63DE7BB0766685744E1A5F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4210705B20E34EBBC1FEE3B /* RootView.swift */; };
 		6202A1777794C5A6EBC9EF01 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D39CB514541A774FCD6E0B /* PrimaryButtonStyle.swift */; };
 		680AB7E9DA113F920F89062B /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA738907A77A77629D76AD /* Money.swift */; };
@@ -28,6 +30,7 @@
 		C7407C0B0D24B5CBAE706BA0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FA8818B8B50735B04BA0A /* OnboardingView.swift */; };
 		DE92F3AB774F59EAFE89EB25 /* SwiftDataFinanceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA5BFB765D7808805A56EEA /* SwiftDataFinanceRepository.swift */; };
 		E11A51558F8FF6A148F892EA /* AppContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BAB2089B4F9823BD24C83B /* AppContainerTests.swift */; };
+		E7CE6D5BD198F8DB974B83F6 /* Budget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276D66EBD9A071DA7B2A2AC0 /* Budget.swift */; };
 		EF1D1D74CFA5900F67742FDC /* PreferencesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE1FD344C81720B314BF7B4 /* PreferencesStore.swift */; };
 		F0FB9396D4835E79589D0D62 /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239B35C1CA0AE26C373EBE1A /* AppTab.swift */; };
 		F34F918388856DE12F9AF80A /* SwiftDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 230320E683018B918B49A744 /* SwiftDataModels.swift */; };
@@ -45,9 +48,11 @@
 
 /* Begin PBXFileReference section */
 		047E2C1BEC4198124CA08E49 /* FFColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFColor.swift; sourceTree = "<group>"; };
+		0D6557E7402F6A866D8BCD93 /* FinancialAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialAnalytics.swift; sourceTree = "<group>"; };
 		230320E683018B918B49A744 /* SwiftDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataModels.swift; sourceTree = "<group>"; };
 		239B35C1CA0AE26C373EBE1A /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
 		26ACD5246FBEDE5A95F8E034 /* MoneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTests.swift; sourceTree = "<group>"; };
+		276D66EBD9A071DA7B2A2AC0 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		288B00963E57339A08165FE0 /* FinFlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinFlowApp.swift; sourceTree = "<group>"; };
 		2D6FA8818B8B50735B04BA0A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		43FA738907A77A77629D76AD /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
@@ -64,6 +69,7 @@
 		976B61AE64E1B88C1A365CB0 /* FinanceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceRepositoryTests.swift; sourceTree = "<group>"; };
 		9A10F7D0F50D5F44BA904625 /* FFCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FFCard.swift; sourceTree = "<group>"; };
 		9CA5BFB765D7808805A56EEA /* SwiftDataFinanceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataFinanceRepository.swift; sourceTree = "<group>"; };
+		A2BF312699F519E14F45E23C /* FinancialAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialAnalyticsTests.swift; sourceTree = "<group>"; };
 		A9EBC6CC2D0980BE1DC44A0E /* FinancialTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialTransaction.swift; sourceTree = "<group>"; };
 		B4210705B20E34EBBC1FEE3B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		DC316F9B9CD88E67DBBD61DF /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -94,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				8E026DD4ECD79C3C0DA8C58B /* Account.swift */,
+				276D66EBD9A071DA7B2A2AC0 /* Budget.swift */,
+				0D6557E7402F6A866D8BCD93 /* FinancialAnalytics.swift */,
 				A9EBC6CC2D0980BE1DC44A0E /* FinancialTransaction.swift */,
 				43FA738907A77A77629D76AD /* Money.swift */,
 				6BCEC64BA88F60D9F6D17133 /* SpendingCategory.swift */,
@@ -172,6 +180,7 @@
 			children = (
 				46BAB2089B4F9823BD24C83B /* AppContainerTests.swift */,
 				976B61AE64E1B88C1A365CB0 /* FinanceRepositoryTests.swift */,
+				A2BF312699F519E14F45E23C /* FinancialAnalyticsTests.swift */,
 				26ACD5246FBEDE5A95F8E034 /* MoneyTests.swift */,
 			);
 			path = FinFlowTests;
@@ -296,11 +305,13 @@
 				7563DBE8AC7EC678ED1604E6 /* ActivityView.swift in Sources */,
 				18F2CE998E08780679EC6629 /* AppContainer.swift in Sources */,
 				F0FB9396D4835E79589D0D62 /* AppTab.swift in Sources */,
+				E7CE6D5BD198F8DB974B83F6 /* Budget.swift in Sources */,
 				A495C5032BE6A13B75D0E516 /* FFCard.swift in Sources */,
 				9DE50A9BBAA221B077778366 /* FFColor.swift in Sources */,
 				3B80EE48A3B9E61DADF5C9FF /* FFLayout.swift in Sources */,
 				A69A688946F67A13B9937E85 /* FinFlowApp.swift in Sources */,
 				766E7ECA25A31FA30917E8C8 /* FinanceRepository.swift in Sources */,
+				3500B028F05FF26C42A4FCCC /* FinancialAnalytics.swift in Sources */,
 				8355A9924714EF88EA01C096 /* FinancialTransaction.swift in Sources */,
 				680AB7E9DA113F920F89062B /* Money.swift in Sources */,
 				C7407C0B0D24B5CBAE706BA0 /* OnboardingView.swift in Sources */,
@@ -321,6 +332,7 @@
 			files = (
 				E11A51558F8FF6A148F892EA /* AppContainerTests.swift in Sources */,
 				93607005770F2273FA3E4A41 /* FinanceRepositoryTests.swift in Sources */,
+				46F429D066874231B28B5635 /* FinancialAnalyticsTests.swift in Sources */,
 				35FB886135245986BA39742C /* MoneyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

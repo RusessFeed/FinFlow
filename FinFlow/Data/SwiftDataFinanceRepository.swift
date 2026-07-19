@@ -27,6 +27,11 @@ final class SwiftDataFinanceRepository: FinanceRepository {
             .sorted { $0.date > $1.date }
     }
 
+    func fetchBudgets() throws -> [Budget] {
+        try context.fetch(FetchDescriptor<BudgetRecord>())
+            .map(\.domainModel)
+    }
+
     func createAccount(_ draft: AccountDraft) throws {
         let cleanName = draft.name.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !cleanName.isEmpty else { throw FinanceRepositoryError.emptyTitle }
@@ -76,6 +81,29 @@ final class SwiftDataFinanceRepository: FinanceRepository {
         try context.save()
     }
 
+    func upsertBudget(_ draft: BudgetDraft) throws {
+        guard draft.monthlyLimit.amount > 0 else { throw FinanceRepositoryError.invalidBudget }
+        let categoryID = draft.categoryID
+        var descriptor = FetchDescriptor<BudgetRecord>(
+            predicate: #Predicate { $0.categoryID == categoryID }
+        )
+        descriptor.fetchLimit = 1
+        if let existing = try context.fetch(descriptor).first {
+            existing.limitAmount = draft.monthlyLimit.amount
+            existing.currencyCode = draft.monthlyLimit.currencyCode
+        } else {
+            context.insert(
+                BudgetRecord(
+                    budget: Budget(
+                        categoryID: draft.categoryID,
+                        monthlyLimit: draft.monthlyLimit
+                    )
+                )
+            )
+        }
+        try context.save()
+    }
+
     func seedIfNeeded() throws {
         guard try context.fetch(FetchDescriptor<AccountRecord>()).isEmpty else { return }
 
@@ -84,6 +112,12 @@ final class SwiftDataFinanceRepository: FinanceRepository {
         let transport = SpendingCategory(name: "Transport", iconName: "car.fill", tintHex: "#0984E3")
         let shopping = SpendingCategory(name: "Shopping", iconName: "bag.fill", tintHex: "#6C5CE7")
         [food, salary, transport, shopping].forEach { context.insert(CategoryRecord(category: $0)) }
+
+        [
+            Budget(categoryID: food.id, monthlyLimit: Money(600)),
+            Budget(categoryID: transport.id, monthlyLimit: Money(180)),
+            Budget(categoryID: shopping.id, monthlyLimit: Money(400))
+        ].forEach { context.insert(BudgetRecord(budget: $0)) }
 
         let everyday = Account(
             name: "Everyday",
@@ -134,6 +168,30 @@ final class SwiftDataFinanceRepository: FinanceRepository {
                 amount: Money(24),
                 kind: .expense,
                 date: .now.addingTimeInterval(-3_600 * 8)
+            ),
+            FinancialTransaction(
+                accountID: everyday.id,
+                categoryID: shopping.id,
+                title: "Running shoes",
+                amount: Money(Decimal(string: "129.90")!),
+                kind: .expense,
+                date: .now.addingTimeInterval(-86_400 * 5)
+            ),
+            FinancialTransaction(
+                accountID: everyday.id,
+                categoryID: food.id,
+                title: "Coffee with friends",
+                amount: Money(Decimal(string: "18.50")!),
+                kind: .expense,
+                date: .now.addingTimeInterval(-86_400 * 3)
+            ),
+            FinancialTransaction(
+                accountID: cash.id,
+                categoryID: food.id,
+                title: "Weekend lunch",
+                amount: Money(Decimal(string: "42.80")!),
+                kind: .expense,
+                date: .now.addingTimeInterval(-86_400 * 6)
             )
         ]
         samples.forEach { context.insert(TransactionRecord(transaction: $0)) }

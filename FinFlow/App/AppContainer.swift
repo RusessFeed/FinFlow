@@ -7,6 +7,7 @@ final class AppContainer: ObservableObject {
     @Published private(set) var accounts: [Account] = []
     @Published private(set) var categories: [SpendingCategory] = []
     @Published private(set) var transactions: [FinancialTransaction] = []
+    @Published private(set) var budgets: [Budget] = []
 
     private let financeRepository: FinanceRepository
     private let preferences: PreferencesStore
@@ -46,6 +47,11 @@ final class AppContainer: ObservableObject {
         refresh()
     }
 
+    func setBudget(_ draft: BudgetDraft) throws {
+        try financeRepository.upsertBudget(draft)
+        refresh()
+    }
+
     func account(id: UUID) -> Account? {
         accounts.first { $0.id == id }
     }
@@ -58,6 +64,7 @@ final class AppContainer: ObservableObject {
         accounts = (try? financeRepository.fetchAccounts()) ?? []
         categories = (try? financeRepository.fetchCategories()) ?? []
         transactions = (try? financeRepository.fetchTransactions()) ?? []
+        budgets = (try? financeRepository.fetchBudgets()) ?? []
     }
 }
 
