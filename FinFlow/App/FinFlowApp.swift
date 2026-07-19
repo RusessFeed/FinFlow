@@ -16,12 +16,17 @@ struct FinFlowApp: App {
                 BudgetRecord.self
             )
             let repository = SwiftDataFinanceRepository(modelContext: modelContainer.mainContext)
+            let rateService = CachedCurrencyRateService(
+                remote: FrankfurterCurrencyRateService(client: URLSessionHTTPClient()),
+                cache: UserDefaultsExchangeRateCache()
+            )
             try repository.seedIfNeeded()
             self.modelContainer = modelContainer
             _container = StateObject(
                 wrappedValue: AppContainer(
                     financeRepository: repository,
-                    preferences: UserDefaultsPreferences()
+                    preferences: UserDefaultsPreferences(),
+                    currencyRateService: rateService
                 )
             )
         } catch {

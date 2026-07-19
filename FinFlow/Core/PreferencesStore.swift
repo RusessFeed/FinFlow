@@ -3,6 +3,8 @@ import Foundation
 protocol PreferencesStore {
     func bool(forKey key: String) -> Bool
     func set(_ value: Bool, forKey key: String)
+    func string(forKey key: String) -> String?
+    func set(_ value: String, forKey key: String)
 }
 
 final class UserDefaultsPreferences: PreferencesStore {
@@ -19,20 +21,38 @@ final class UserDefaultsPreferences: PreferencesStore {
     func set(_ value: Bool, forKey key: String) {
         defaults.set(value, forKey: key)
     }
+
+    func string(forKey key: String) -> String? {
+        defaults.string(forKey: key)
+    }
+
+    func set(_ value: String, forKey key: String) {
+        defaults.set(value, forKey: key)
+    }
 }
 
 final class InMemoryPreferences: PreferencesStore {
-    private var values: [String: Bool]
+    private var boolValues: [String: Bool]
+    private var stringValues: [String: String]
 
-    init(values: [String: Bool] = [:]) {
-        self.values = values
+    init(values: [String: Bool] = [:], strings: [String: String] = [:]) {
+        boolValues = values
+        stringValues = strings
     }
 
     func bool(forKey key: String) -> Bool {
-        values[key, default: false]
+        boolValues[key, default: false]
     }
 
     func set(_ value: Bool, forKey key: String) {
-        values[key] = value
+        boolValues[key] = value
+    }
+
+    func string(forKey key: String) -> String? {
+        stringValues[key]
+    }
+
+    func set(_ value: String, forKey key: String) {
+        stringValues[key] = value
     }
 }

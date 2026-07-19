@@ -2,7 +2,7 @@
 
 FinFlow is a portfolio-grade personal finance app built as a production-minded iOS project.
 
-## Current milestone — Receipt scanning
+## Current milestone — Exchange rates and offline caching
 
 - SwiftUI application shell and tab navigation
 - Dependency injection through `AppContainer`
@@ -21,11 +21,15 @@ FinFlow is a portfolio-grade personal finance app built as a production-minded i
 - Multi-page receipt scanning powered by VisionKit
 - Photo-library receipt import and on-device Vision OCR
 - Automatic merchant, total, and date extraction
+- Async/await exchange-rate networking with typed errors
+- Preferred display currency across the financial dashboard
+- USD, EUR, GBP, GEL, and JPY conversion
+- UserDefaults-backed offline rate cache with network fallback
 - Unit tests for CRUD operations, balance calculations, and app state
 
 ## Roadmap
 
-Future milestones will add exchange rates, smart insights, security, widgets, accessibility polish, and CI.
+Future milestones will add smart insights, security, widgets, accessibility polish, and CI.
 
 ## Stack
 

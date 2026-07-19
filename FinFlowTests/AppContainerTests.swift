@@ -48,6 +48,35 @@ final class AppContainerTests: XCTestCase {
 
         XCTAssertEqual(container.accounts.first?.name, "Travel")
     }
+
+    func testPreferredCurrencyPersistsAndConvertsBalance() async {
+        let preferences = InMemoryPreferences()
+        let rates = ExchangeRateSnapshot(
+            baseCurrency: "USD",
+            rates: ["EUR": Decimal(string: "0.8")!],
+            marketDate: "2026-07-18",
+            fetchedAt: .now
+        )
+        let container = AppContainer(
+            financeRepository: StubFinanceRepository(),
+            preferences: preferences,
+            currencyRateService: StubCurrencyRateService(snapshot: rates)
+        )
+
+        container.setPreferredCurrency("EUR")
+        await container.refreshExchangeRates()
+
+        XCTAssertEqual(preferences.string(forKey: PreferenceKey.preferredCurrency), "EUR")
+        XCTAssertEqual(container.displayMoney(Money(100)), Money(80, currencyCode: "EUR"))
+    }
+}
+
+private struct StubCurrencyRateService: CurrencyRateService {
+    let snapshot: ExchangeRateSnapshot
+
+    func rates(baseCurrency: String) async throws -> ExchangeRateSnapshot {
+        snapshot
+    }
 }
 
 @MainActor

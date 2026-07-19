@@ -14,6 +14,9 @@ struct RootView: View {
             }
         }
         .animation(.easeInOut(duration: 0.3), value: container.hasCompletedOnboarding)
+        .task {
+            await container.refreshExchangeRates()
+        }
     }
 }
 

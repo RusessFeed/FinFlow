@@ -33,19 +33,19 @@ struct OverviewView: View {
             ScrollView {
                 VStack(spacing: FFLayout.medium) {
                     BalanceCard(
-                        balance: container.accounts.totalBalance(),
-                        cashFlow: Money(summary.cashFlow)
+                        balance: container.displayMoney(container.accounts.totalBalance()),
+                        cashFlow: container.displayMoney(Money(summary.cashFlow))
                     )
 
                     HStack(spacing: FFLayout.medium) {
                         MetricCard(
                             title: "Income",
-                            value: Money(summary.income).formatted(),
+                            value: container.displayMoney(Money(summary.income)).formatted(),
                             color: FFColor.positive
                         )
                         MetricCard(
                             title: "Spent",
-                            value: Money(summary.spending).formatted(),
+                            value: container.displayMoney(Money(summary.spending)).formatted(),
                             color: FFColor.negative
                         )
                     }
