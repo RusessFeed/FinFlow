@@ -1,4 +1,7 @@
+import PhotosUI
 import SwiftUI
+import UIKit
+import VisionKit
 
 struct ActivityView: View {
     @EnvironmentObject private var container: AppContainer
@@ -118,6 +121,9 @@ private struct AddTransactionView: View {
     @State private var date = Date.now
     @State private var note = ""
     @State private var errorMessage: String?
+    @State private var showingScanner = false
+    @State private var selectedReceiptPhoto: PhotosPickerItem?
+    @State private var isRecognizingReceipt = false
 
     private var parsedAmount: Decimal? {
         guard let value = Decimal(string: amount.replacingOccurrences(of: ",", with: ".")), value > 0 else {
@@ -129,6 +135,27 @@ private struct AddTransactionView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section("Receipt") {
+                    Button {
+                        showingScanner = true
+                    } label: {
+                        Label("Scan with camera", systemImage: "doc.viewfinder")
+                    }
+                    .disabled(!VNDocumentCameraViewController.isSupported)
+
+                    PhotosPicker(selection: $selectedReceiptPhoto, matching: .images) {
+                        Label("Import receipt photo", systemImage: "photo")
+                    }
+
+                    if isRecognizingReceipt {
+                        HStack {
+                            ProgressView()
+                            Text("Reading receipt…")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
+
                 Section {
                     Picker("Type", selection: $kind) {
                         Text("Expense").tag(FinancialTransaction.Kind.expense)
@@ -177,6 +204,20 @@ private struct AddTransactionView: View {
                 accountID = accountID ?? container.accounts.first?.id
                 categoryID = categoryID ?? defaultCategoryID
             }
+            .onChange(of: selectedReceiptPhoto) { _, item in
+                guard let item else { return }
+                importReceiptPhoto(item)
+            }
+            .fullScreenCover(isPresented: $showingScanner) {
+                ReceiptScannerView(
+                    onResult: { result in
+                        showingScanner = false
+                        handleReceiptResult(result)
+                    },
+                    onCancel: { showingScanner = false }
+                )
+                .ignoresSafeArea()
+            }
             .alert("Could not add transaction", isPresented: errorBinding) {
                 Button("OK", role: .cancel) {}
             } message: {
@@ -220,6 +261,48 @@ private struct AddTransactionView: View {
             dismiss()
         } catch {
             errorMessage = error.localizedDescription
+        }
+    }
+
+    private func importReceiptPhoto(_ item: PhotosPickerItem) {
+        isRecognizingReceipt = true
+        Task {
+            do {
+                guard let data = try await item.loadTransferable(type: Data.self),
+                      let image = UIImage(data: data) else {
+                    throw ReceiptRecognitionError.invalidImage
+                }
+                let result = try await ReceiptTextRecognizer.recognize(images: [image])
+                await MainActor.run {
+                    isRecognizingReceipt = false
+                    apply(result)
+                }
+            } catch {
+                await MainActor.run {
+                    isRecognizingReceipt = false
+                    errorMessage = error.localizedDescription
+                }
+            }
+        }
+    }
+
+    private func handleReceiptResult(_ result: Result<ReceiptScanResult, Error>) {
+        switch result {
+        case .success(let receipt):
+            apply(receipt)
+        case .failure(let error):
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    private func apply(_ receipt: ReceiptScanResult) {
+        kind = .expense
+        if let merchant = receipt.merchant { title = merchant }
+        if let total = receipt.total { amount = NSDecimalNumber(decimal: total).stringValue }
+        if let receiptDate = receipt.date { date = receiptDate }
+        categoryID = container.categories.first { $0.name == "Food" }?.id ?? categoryID
+        if note.isEmpty {
+            note = "Imported from receipt · \(receipt.recognizedLines.count) text lines recognized"
         }
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CFB1F15B88D7C2336FCD261 /* ReceiptTextRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB747ABE26501A05F25381EA /* ReceiptTextRecognizer.swift */; };
 		18F2CE998E08780679EC6629 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F90FC09D9349900E11FC52E /* AppContainer.swift */; };
 		3500B028F05FF26C42A4FCCC /* FinancialAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6557E7402F6A866D8BCD93 /* FinancialAnalytics.swift */; };
 		35FB886135245986BA39742C /* MoneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ACD5246FBEDE5A95F8E034 /* MoneyTests.swift */; };
@@ -16,16 +17,19 @@
 		5B63DE7BB0766685744E1A5F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4210705B20E34EBBC1FEE3B /* RootView.swift */; };
 		6202A1777794C5A6EBC9EF01 /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D39CB514541A774FCD6E0B /* PrimaryButtonStyle.swift */; };
 		680AB7E9DA113F920F89062B /* Money.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FA738907A77A77629D76AD /* Money.swift */; };
+		6B1202C2521B1381E8F1B9AD /* ReceiptScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A815689ABB57B0CDA3F76A /* ReceiptScannerView.swift */; };
 		711F91747918B4B1A0BEBEFC /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5994645624C9260182E0EB97 /* OverviewView.swift */; };
 		7563DBE8AC7EC678ED1604E6 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC316F9B9CD88E67DBBD61DF /* ActivityView.swift */; };
 		766E7ECA25A31FA30917E8C8 /* FinanceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF49BBB04D61B14D308DD779 /* FinanceRepository.swift */; };
 		774C2511F50F2E2EACBF6D27 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5164C6CF9540FFDFA0D22E4F /* AccountsView.swift */; };
 		8355A9924714EF88EA01C096 /* FinancialTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EBC6CC2D0980BE1DC44A0E /* FinancialTransaction.swift */; };
+		8B4787ECD60954C538B2DD9A /* ReceiptParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F6A711A930CEB24A3340EF /* ReceiptParserTests.swift */; };
 		93607005770F2273FA3E4A41 /* FinanceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 976B61AE64E1B88C1A365CB0 /* FinanceRepositoryTests.swift */; };
 		9DE50A9BBAA221B077778366 /* FFColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047E2C1BEC4198124CA08E49 /* FFColor.swift */; };
 		A495C5032BE6A13B75D0E516 /* FFCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A10F7D0F50D5F44BA904625 /* FFCard.swift */; };
 		A69A688946F67A13B9937E85 /* FinFlowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B00963E57339A08165FE0 /* FinFlowApp.swift */; };
 		C067B748016D80AAC0399156 /* SpendingCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCEC64BA88F60D9F6D17133 /* SpendingCategory.swift */; };
+		C50AE1AB6E780313AB8C2D50 /* ReceiptParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C2FC06A259B8C12B912445 /* ReceiptParser.swift */; };
 		C732DB635E4581748267121A /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E026DD4ECD79C3C0DA8C58B /* Account.swift */; };
 		C7407C0B0D24B5CBAE706BA0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6FA8818B8B50735B04BA0A /* OnboardingView.swift */; };
 		DE92F3AB774F59EAFE89EB25 /* SwiftDataFinanceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA5BFB765D7808805A56EEA /* SwiftDataFinanceRepository.swift */; };
@@ -55,6 +59,7 @@
 		276D66EBD9A071DA7B2A2AC0 /* Budget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Budget.swift; sourceTree = "<group>"; };
 		288B00963E57339A08165FE0 /* FinFlowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinFlowApp.swift; sourceTree = "<group>"; };
 		2D6FA8818B8B50735B04BA0A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		34A815689ABB57B0CDA3F76A /* ReceiptScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptScannerView.swift; sourceTree = "<group>"; };
 		43FA738907A77A77629D76AD /* Money.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Money.swift; sourceTree = "<group>"; };
 		46BAB2089B4F9823BD24C83B /* AppContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerTests.swift; sourceTree = "<group>"; };
 		5164C6CF9540FFDFA0D22E4F /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
@@ -72,6 +77,9 @@
 		A2BF312699F519E14F45E23C /* FinancialAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialAnalyticsTests.swift; sourceTree = "<group>"; };
 		A9EBC6CC2D0980BE1DC44A0E /* FinancialTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialTransaction.swift; sourceTree = "<group>"; };
 		B4210705B20E34EBBC1FEE3B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		C7C2FC06A259B8C12B912445 /* ReceiptParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptParser.swift; sourceTree = "<group>"; };
+		CB747ABE26501A05F25381EA /* ReceiptTextRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptTextRecognizer.swift; sourceTree = "<group>"; };
+		D2F6A711A930CEB24A3340EF /* ReceiptParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptParserTests.swift; sourceTree = "<group>"; };
 		DC316F9B9CD88E67DBBD61DF /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		DF49BBB04D61B14D308DD779 /* FinanceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceRepository.swift; sourceTree = "<group>"; };
 		EBF88762DF186EF543879C53 /* FinFlow.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FinFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +136,7 @@
 				76880F22062559B49F5CBFA7 /* Onboarding */,
 				CF52E0AEB8E2547A3DAA8E50 /* Overview */,
 				B790E8E5E95237D117AF8D1E /* Profile */,
+				A2AE80EC54C6F0887B2ED1D0 /* ReceiptScanner */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -138,6 +147,16 @@
 				2D6FA8818B8B50735B04BA0A /* OnboardingView.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		A2AE80EC54C6F0887B2ED1D0 /* ReceiptScanner */ = {
+			isa = PBXGroup;
+			children = (
+				C7C2FC06A259B8C12B912445 /* ReceiptParser.swift */,
+				34A815689ABB57B0CDA3F76A /* ReceiptScannerView.swift */,
+				CB747ABE26501A05F25381EA /* ReceiptTextRecognizer.swift */,
+			);
+			path = ReceiptScanner;
 			sourceTree = "<group>";
 		};
 		B790E8E5E95237D117AF8D1E /* Profile */ = {
@@ -182,6 +201,7 @@
 				976B61AE64E1B88C1A365CB0 /* FinanceRepositoryTests.swift */,
 				A2BF312699F519E14F45E23C /* FinancialAnalyticsTests.swift */,
 				26ACD5246FBEDE5A95F8E034 /* MoneyTests.swift */,
+				D2F6A711A930CEB24A3340EF /* ReceiptParserTests.swift */,
 			);
 			path = FinFlowTests;
 			sourceTree = "<group>";
@@ -319,6 +339,9 @@
 				EF1D1D74CFA5900F67742FDC /* PreferencesStore.swift in Sources */,
 				6202A1777794C5A6EBC9EF01 /* PrimaryButtonStyle.swift in Sources */,
 				3ABD1D3407F74D84C8B113CF /* ProfileView.swift in Sources */,
+				C50AE1AB6E780313AB8C2D50 /* ReceiptParser.swift in Sources */,
+				6B1202C2521B1381E8F1B9AD /* ReceiptScannerView.swift in Sources */,
+				0CFB1F15B88D7C2336FCD261 /* ReceiptTextRecognizer.swift in Sources */,
 				5B63DE7BB0766685744E1A5F /* RootView.swift in Sources */,
 				C067B748016D80AAC0399156 /* SpendingCategory.swift in Sources */,
 				DE92F3AB774F59EAFE89EB25 /* SwiftDataFinanceRepository.swift in Sources */,
@@ -334,6 +357,7 @@
 				93607005770F2273FA3E4A41 /* FinanceRepositoryTests.swift in Sources */,
 				46F429D066874231B28B5635 /* FinancialAnalyticsTests.swift in Sources */,
 				35FB886135245986BA39742C /* MoneyTests.swift in Sources */,
+				8B4787ECD60954C538B2DD9A /* ReceiptParserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +459,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = FinFlow;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Scan receipts to create transactions automatically.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Import receipt photos to create transactions automatically.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -528,6 +554,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = FinFlow;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Scan receipts to create transactions automatically.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Import receipt photos to create transactions automatically.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
